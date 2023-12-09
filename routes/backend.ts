@@ -37,4 +37,12 @@ router.post("/vehicle/add", (req: Request, res: Response, next:NextFunction) => 
     res.status(201).send("Vehicle added")
 })
 
+router.get("/vehicle/search/:model", (req: Request, res: Response, next: NextFunction) => {
+    if(vehicle_list[req.params.model]){
+        res.send(vehicle_list[req.params.model])
+    } else {
+        res.status(404).send("Not found")
+    }
+})
+
 export default router

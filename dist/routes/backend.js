@@ -23,4 +23,12 @@ router.post("/vehicle/add", (req, res, next) => {
     vehicle_list[req.body.model] = vehicle;
     res.status(201).send("Vehicle added");
 });
+router.get("/vehicle/search/:model", (req, res, next) => {
+    if (vehicle_list[req.params.model]) {
+        res.send(vehicle_list[req.params.model]);
+    }
+    else {
+        res.status(404).send("Not found");
+    }
+});
 exports.default = router;
